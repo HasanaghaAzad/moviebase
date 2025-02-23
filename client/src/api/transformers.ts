@@ -6,7 +6,7 @@ export const transformMovieDTO = (movieDTO: MovieDTO): Movie => {
   return {
     id: movieDTO.id,
     title: movieDTO.title,
-    posterUrl: `${POSTERS_BASE_URL}${movieDTO.poster_path}`,
+    posterUrl: movieDTO.poster_path && `${POSTERS_BASE_URL}${movieDTO.poster_path}`,
     description: movieDTO.overview,
   };
 };

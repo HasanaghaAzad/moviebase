@@ -1,5 +1,5 @@
 import {getRelativeDataPartition, getRelativePageNumber} from "../libs/utils";
-import {MovieDTO} from "../types/interfaces";
+import {MovieDTO, MovieListDTO} from "../types/interfaces";
 import {Movie, MovieList} from "../types/types";
 import {transformMovieDTO, transformMoviesDTO} from "./transformers";
 
@@ -12,8 +12,22 @@ export const fetchMovies = async (page: number): Promise<MovieList> => {
   if (!response.ok) {
     throw new Error("Failed to fetch movies");
   }
-  const data = await response.json();
+  const data: MovieListDTO = await response.json();
 
+  const relativeDataPartition = {
+    ...data,
+    results: getRelativeDataPartition(data.results, page),
+  };
+  return transformMoviesDTO(relativeDataPartition);
+};
+
+export const searchMovies = async (query: string, page: number): Promise<MovieList> => {
+  const relativePage = getRelativePageNumber(page);
+  const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${relativePage}`);
+  if (!response.ok) {
+    throw new Error("Failed to search movies");
+  }
+  const data: MovieListDTO = await response.json();
   const relativeDataPartition = {
     ...data,
     results: getRelativeDataPartition(data.results, page),

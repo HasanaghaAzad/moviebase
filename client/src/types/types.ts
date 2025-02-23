@@ -1,7 +1,7 @@
 export type Movie = {
   id: number;
   title: string;
-  posterUrl: string;
+  posterUrl: string | null;
   description: string;
 };
 

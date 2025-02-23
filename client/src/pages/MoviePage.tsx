@@ -21,7 +21,7 @@ const MoviePage: React.FC = () => {
         <Header />
         <div className="movie-details">
           <h1>{data.title}</h1>
-          <img src={data.posterUrl} alt={data.title} />
+          {data.posterUrl && <img src={data.posterUrl} alt={data.title} />}
           <p>{data.description}</p>
         </div>
       </>

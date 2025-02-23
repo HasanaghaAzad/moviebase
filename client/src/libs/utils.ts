@@ -1,3 +1,5 @@
+import { MovieDTO } from "../types/interfaces";
+
 export const getRelativePageNumber = (pageOfPer10: number): number => {
   // to make pagination system work as 10 items per page while TMDB API works only with 20 per page
   const perPageInUI = 10; //not changeable. this method designed only for 10
@@ -7,7 +9,7 @@ export const getRelativePageNumber = (pageOfPer10: number): number => {
   return pageOfPer20;
 };
 
-export const getRelativeDataPartition = (dataOfPer20: [], pageOfPer10: number) => {
+export const getRelativeDataPartition = (dataOfPer20: MovieDTO[], pageOfPer10: number) => {
   // to make pagination system work as 10 items per page while TMDB API works only with 20 per page
   const perPageInUI = 10; //not changeable. this method designed only for 10
   const perpageInAPI = 20; //not changeable. always 20.  TMDB rule.
