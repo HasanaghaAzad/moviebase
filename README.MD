@@ -14,7 +14,7 @@ MovieBase is a small React application that allows users to browse and search fo
 - React
 - TypeScript
 - Vite
-- React Router
+- React Query
 - Sass (SCSS)
 - TMDB API
 
@@ -45,7 +45,7 @@ MovieBase is a small React application that allows users to browse and search fo
    Open the `.env` file and add your TMDB API key. You can obtain an API key by creating an account on [TMDB](https://developer.themoviedb.org/docs/getting-started).
 
    ```env
-   VITE_TMDB_API_KEY=your_api_key_here
+   VITE_TMDB_API_KEY=YOUR_TMDB_API_KEY
    VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
    VITE_TMDB_POSTER_URL=https://image.tmdb.org/t/p/w500
    ```
